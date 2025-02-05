@@ -14,8 +14,8 @@ exports.createBooking = async (req, res) => {
     });
     await booking.save();
     res.json(booking);
-  } catch {
-    res.status(400).json({ message: "Error" });
+  } catch (e) {
+    res.status(400).json({ message: "Error creating booking" });
   }
 };
 
@@ -25,7 +25,7 @@ exports.getMyBookings = async (req, res) => {
       "service"
     );
     res.json(bookings);
-  } catch {
-    res.status(400).json({ message: "Error" });
+  } catch (e) {
+    res.status(400).json({ message: "Error fetching bookings" });
   }
 };

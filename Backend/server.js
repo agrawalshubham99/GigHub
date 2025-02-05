@@ -2,10 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const { connectDB } = require("./config/db");
-const authRoutes = require("./routes/authRoutes");
-const serviceRoutes = require("./routes/serviceRoutes");
-const bookingRoutes = require("./routes/bookingRoutes");
-const chatRoutes = require("./routes/chatRoutes");
 
 dotenv.config();
 connectDB();
@@ -13,6 +9,11 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+
+const authRoutes = require("./routes/authRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
